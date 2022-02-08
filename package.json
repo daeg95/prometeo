@@ -1,0 +1,20 @@
+{
+  "name": "prometeo-probe",
+  "version": "1.0.0",
+  "description": "",
+  "main": "input.js",
+  "type": "module",
+  "scripts": {
+    "start": "node input.js",
+    "startapp": "node prometeo_probe.js",
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node-fetch": "^3.2.0"
+  },
+  "devDependencies": {
+    "jest": "^27.5.0"
+  }
+}
