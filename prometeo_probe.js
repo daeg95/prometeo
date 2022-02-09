@@ -41,45 +41,53 @@ async function players(Data, inchInput) {
   // of inches and the names.
 
   let hashTable = new Set();
-  let final_response = null
+
+  let heights = []
+  let names = []
 
   newset.forEach((inch) => {
     let difference = inchInput - inch;
-    
-    
 
     // Look at the condition if the difference is inside hashTable
 
     if (hashTable.has(difference)) {
       
       // If there is a match, the h_in values are extracted that are added together and meet
-      // the condition. Later, the names of the players that meet the height with these values.
-      // Finally, pairs are formed between these.
+      // the condition.creating an array with all pairs of heights.
+      
+      heights.push([inch, difference])
 
-      console.log(
-        "The height pair that added together give " + inchInput +" is (" + inch +", " + difference + ")"
-      );
-      console.log("The combination of players that meet these heights are:");
+      //Later, we obtain the names of the players that meet with these values in h_in. 
+      //Finally, pairs are formed between these.
+    
 
       newMap[inch].forEach((name1) => {
         newMap1[difference].forEach((name2) => {
 
-          
-           console.log(name1, name2);
-           final_response = [name1, name2]
-        
+          names.push([name1, name2])        
         
         });
       });
+
     }
     hashTable.add(inch);
 
  
   });
 
-  
+  //See if there are any pair of heights match with input number, 
+  //in case it does not return "Not matches found for this input number"
 
+  if ( heights.length > 0) {
+      // console.log(
+      //   "The height pair that added together give " + inchInput +" is : " + heights +""
+      // );
+      // console.log("The combination of players that meet these heights are:" + names);
+    return names
+  } else {
 
+    return "Not matches found for this input number"
+  }
 
 }
 
